@@ -13,12 +13,7 @@ public class CardController {
 	private MonsterService monsterService;
 
 	@RequestMapping("/card")
-	public Object searchCard(MonsterVO vo) {
-		try {
-			return vo;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	public Object searchCard(MonsterVO vo) throws Exception {
+		return monsterService.searchMonster(vo, 1, 10);
 	}
 }

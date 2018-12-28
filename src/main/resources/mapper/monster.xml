@@ -6,21 +6,27 @@
 	   SELECT c_name,j_name,e_name,nw_name,psd,lev,attribute,race,atk,def,pend,link,img,ban,desc_nw,proprietary,hash_code FROM t_monster WHERE 1=1
 	   <if test="ids != null">
 	       AND hash_code IN
-           <foreach collection="array" item="id" index="ids" open="(" close=")" separator=",">
+           <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
 	            #{id}
            </foreach>
 	   </if>
-	   <if test="mon.cName != null &amp;&amp; mon.cName != ''">
-	       AND c_name LIKE CONCAT('%',#{mon.cName},'%')
+	   <if test="mon.name != null &amp;&amp; mon.name != ''">
+	       AND c_name LIKE CONCAT('%',#{mon.name},'%')
 	   </if>
 	   <if test="mon.lev != null">
 	       AND lev=#{mon.lev}
 	   </if>
-	   <if test="mon.attribute != null">
-	       AND attribute=#{mon.attribute}
+	   <if test="mon.attributes != null">
+	       AND attribute= IN
+           <foreach collection="mon.attributes" item="attribute" index="index" open="(" close=")" separator=",">
+	            #{attribute}
+           </foreach>
 	   </if>
-	   <if test="mon.race != null">
-	       AND race=#{mon.race}
+	   <if test="mon.races != null">
+	       AND race= IN
+           <foreach collection="mon.races" item="race" index="index" open="(" close=")" separator=",">
+	            #{race}
+           </foreach>
 	   </if>
 	   <if test="mon.atk != null">
 	       AND atk=#{mon.atk}
@@ -34,8 +40,8 @@
 	   <if test="mon.link != null">
 	       AND link=#{mon.link}
 	   </if>
-	   <if test="mon.ban != null">
-	       AND ban=#{mon.ban}
+	   <if test="mon.limit != null">
+	       AND ban=#{mon.limit}
 	   </if>
 	   LIMIT #{start},#{row}
 	</select>

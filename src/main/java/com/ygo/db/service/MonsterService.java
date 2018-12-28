@@ -3,7 +3,9 @@ package com.ygo.db.service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import com.ygo.db.mapper.RareMapper;
 import com.ygo.db.mapper.TypeMapper;
 import com.ygo.db.model.Monster;
 import com.ygo.db.model.PackageInfo;
+import com.ygo.manager.ArrowManager;
+import com.ygo.manager.TypeManager;
 import com.ygo.model.CardVO;
 import com.ygo.model.CardVO.PackInfo;
 import com.ygo.vo.MonsterVO;
@@ -44,13 +48,28 @@ public class MonsterService {
 	
 	@Autowired
 	private RareMapper rareMapper;
+	
+	@Autowired
+	private ArrowManager arrowManager;
+	
+	@Autowired
+	private TypeManager typeManager;
 
 	public List<CardVO> searchMonster(MonsterVO monsterVO, Integer start, Integer row) throws Exception {
+		Set<Integer> hashs = new HashSet<Integer>();
+		if (monsterVO.getArrows() != null) {
+			arrowsHandler(monsterVO.getArrows(), hashs);
+		}
 		
+		if (monsterVO.getOthers() != null) {
+			typeHandler(monsterVO.getOthers(), hashs);
+		}
 		
-		return null;
-	/**
-		List<Monster> list = monsterMapper.findMonster(null, monsterVO, start, row);
+		if (hashs.size() <= 0) {
+			hashs = null;
+		}
+		
+		List<Monster> list = monsterMapper.findMonster(hashs, monsterVO, (start - 1) * row, row);
 		List<CardVO> vos = new ArrayList<CardVO>();
 		for (Monster mon : list) {
 			CardVO vo = new CardVO();
@@ -94,6 +113,21 @@ public class MonsterService {
 		}
 		
 		return vos;
-		*/
+	}
+	
+	private void arrowsHandler(List<Integer> arrows, Set<Integer> hashs) {
+		arrows.forEach(arrow -> {
+			for (Integer integer : arrowManager.getHash(arrow)) {
+				hashs.add(integer);
+			}
+		});
+	}
+	
+	private void typeHandler(List<Integer> arrows, Set<Integer> hashs) {
+		arrows.forEach(arrow -> {
+			for (Integer integer : typeManager.getHash(arrow)) {
+				hashs.add(integer);
+			}
+		});
 	}
 }
