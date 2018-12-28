@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ygo.db.mapper.MagTraMapper">
+
+	<select id="findMagTra" resultType="com.ygo.db.model.MagTra">
+	   SELECT c_name,j_name,e_name,nw_name,psd,img,ban,desc_nw,proprietary,hash_code FROM t_mag_tra WHERE 1=1
+	   <if test="ids != null">
+	       AND hash_code IN
+           <foreach collection="array" item="id" index="ids" open="(" close=")" separator=",">
+	            #{id}
+           </foreach>
+	   </if>
+	   <if test="mag.cName != null &amp;&amp; mon.cName != ''">
+	       AND c_name LIKE CONCAT('%',#{mag.cName},'%')
+	   </if>
+	   <if test="mag.ban != null">
+	       AND ban=#{mag.ban}
+	   </if>
+	   LIMIT #{start},#{row}
+	</select>
+
+</mapper>
