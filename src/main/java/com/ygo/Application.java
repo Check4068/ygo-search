@@ -11,7 +11,7 @@ import com.ygo.manager.ArrowManager;
 import com.ygo.manager.TypeManager;
 
 @SpringBootApplication
-@MapperScan(basePackages = { "com.ygo.db.mapper" })
+@MapperScan(basePackages = { "com.ygo.mapper" })
 public class Application implements CommandLineRunner {
 	
 	@Autowired

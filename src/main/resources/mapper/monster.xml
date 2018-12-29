@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ygo.db.mapper.MonsterMapper">
+<mapper namespace="com.ygo.mapper.MonsterMapper">
 
-	<select id="findMonster" resultType="com.ygo.db.model.Monster">
+	<select id="findMonster" resultType="com.ygo.model.db.Monster">
 	   SELECT c_name,j_name,e_name,nw_name,psd,lev,attribute,race,atk,def,pend,link,img,ban,desc_nw,proprietary,hash_code FROM t_monster WHERE 1=1
 	   <if test="ids != null">
 	       AND hash_code IN
