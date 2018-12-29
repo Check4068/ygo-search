@@ -1,4 +1,4 @@
-package com.ygo.db.mapper;
+package com.ygo.mapper;
 
 import java.util.List;
 import java.util.Set;
@@ -6,8 +6,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-import com.ygo.db.model.Monster;
-import com.ygo.vo.MonsterVO;
+
+import com.ygo.model.db.Monster;
+import com.ygo.model.vo.MonsterVO;
 
 
 public interface MonsterMapper {

@@ -6,15 +6,15 @@
 	   SELECT c_name,j_name,e_name,nw_name,psd,img,ban,desc_nw,proprietary,hash_code FROM t_mag_tra WHERE 1=1
 	   <if test="ids != null">
 	       AND hash_code IN
-           <foreach collection="array" item="id" index="ids" open="(" close=")" separator=",">
+           <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
 	            #{id}
            </foreach>
 	   </if>
-	   <if test="mag.cName != null &amp;&amp; mon.cName != ''">
-	       AND c_name LIKE CONCAT('%',#{mag.cName},'%')
+	   <if test="mag.name != null &amp;&amp; mon.name != ''">
+	       AND c_name LIKE CONCAT('%',#{mag.name},'%')
 	   </if>
-	   <if test="mag.ban != null">
-	       AND ban=#{mag.ban}
+	   <if test="mag.limit != null">
+	       AND ban=#{mag.limit}
 	   </if>
 	   LIMIT #{start},#{row}
 	</select>

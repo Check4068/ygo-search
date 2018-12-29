@@ -1,13 +1,13 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.Date;
 
-public class Rare {
+public class Type {
     private Integer id;
 
-    private String name;
+    private Integer cardHash;
 
-    private String shortName;
+    private Integer type;
 
     private Date modifyTime;
 
@@ -21,12 +21,20 @@ public class Rare {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCardHash() {
+        return cardHash;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCardHash(Integer cardHash) {
+        this.cardHash = cardHash;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Date getModifyTime() {
@@ -44,12 +52,4 @@ public class Rare {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-	public String getShortName() {
-		return shortName;
-	}
-
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
-	}
 }

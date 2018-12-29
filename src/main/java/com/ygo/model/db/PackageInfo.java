@@ -1,13 +1,19 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.Date;
 
-public class Type {
+public class PackageInfo {
     private Integer id;
 
     private Integer cardHash;
 
-    private Integer type;
+    private Integer packageId;
+
+    private Integer rare;
+
+    private String cardNo;
+
+    private Date sellTime;
 
     private Date modifyTime;
 
@@ -29,12 +35,36 @@ public class Type {
         this.cardHash = cardHash;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getPackageId() {
+        return packageId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setPackageId(Integer packageId) {
+        this.packageId = packageId;
+    }
+
+    public Integer getRare() {
+        return rare;
+    }
+
+    public void setRare(Integer rare) {
+        this.rare = rare;
+    }
+
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public Date getSellTime() {
+        return sellTime;
+    }
+
+    public void setSellTime(Date sellTime) {
+        this.sellTime = sellTime;
     }
 
     public Date getModifyTime() {

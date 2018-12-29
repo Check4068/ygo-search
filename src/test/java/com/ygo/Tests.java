@@ -7,12 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ygo.db.mapper.MonsterMapper;
-import com.ygo.db.model.Monster;
-import com.ygo.db.service.HashService;
-import com.ygo.db.service.MagTraService;
-import com.ygo.db.service.MonsterService;
-import com.ygo.model.CardVO;
+import com.ygo.mapper.MonsterMapper;
+import com.ygo.model.db.Monster;
+import com.ygo.model.vo.CardVO;
+import com.ygo.service.HashService;
+import com.ygo.service.MagTraService;
+import com.ygo.service.MonsterService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

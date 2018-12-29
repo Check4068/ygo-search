@@ -1,11 +1,11 @@
-package com.ygo.db.mapper;
+package com.ygo.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
-import com.ygo.db.model.Package;
+import com.ygo.model.db.Package;
 
 public interface PackageMapper {
 

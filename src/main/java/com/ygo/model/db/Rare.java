@@ -1,13 +1,13 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.Date;
 
-public class LinkArrow {
+public class Rare {
     private Integer id;
 
-    private Integer monsterHash;
+    private String name;
 
-    private Integer arrow;
+    private String shortName;
 
     private Date modifyTime;
 
@@ -21,20 +21,12 @@ public class LinkArrow {
         this.id = id;
     }
 
-    public Integer getMonsterHash() {
-        return monsterHash;
+    public String getName() {
+        return name;
     }
 
-    public void setMonsterHash(Integer monsterHash) {
-        this.monsterHash = monsterHash;
-    }
-
-    public Integer getArrow() {
-        return arrow;
-    }
-
-    public void setArrow(Integer arrow) {
-        this.arrow = arrow;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getModifyTime() {
@@ -52,4 +44,12 @@ public class LinkArrow {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
 }

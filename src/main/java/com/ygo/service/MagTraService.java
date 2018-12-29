@@ -1,4 +1,4 @@
-package com.ygo.db.service;
+package com.ygo.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 import com.ygo.basic.LimitEnum;
 import com.ygo.basic.TypeEnum;
-import com.ygo.db.mapper.MagTraMapper;
-import com.ygo.db.mapper.PackageInfoMapper;
-import com.ygo.db.mapper.PackageMapper;
-import com.ygo.db.mapper.RareMapper;
-import com.ygo.db.mapper.TypeMapper;
-import com.ygo.db.model.MagTra;
-import com.ygo.db.model.PackageInfo;
-import com.ygo.model.CardVO;
-import com.ygo.model.CardVO.PackInfo;
+import com.ygo.mapper.MagTraMapper;
+import com.ygo.mapper.PackageInfoMapper;
+import com.ygo.mapper.PackageMapper;
+import com.ygo.mapper.RareMapper;
+import com.ygo.mapper.TypeMapper;
+import com.ygo.model.db.MagTra;
+import com.ygo.model.db.PackageInfo;
+import com.ygo.model.vo.CardVO;
+import com.ygo.model.vo.CardVO.PackInfo;
 
 @Service
 public class MagTraService {

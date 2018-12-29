@@ -3,8 +3,9 @@ package com.ygo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.ygo.db.service.MonsterService;
-import com.ygo.vo.MonsterVO;
+
+import com.ygo.model.vo.MonsterVO;
+import com.ygo.service.MonsterService;
 
 @RestController
 public class CardController {
@@ -14,6 +15,6 @@ public class CardController {
 
 	@RequestMapping("/card")
 	public Object searchCard(MonsterVO vo) throws Exception {
-		return monsterService.searchMonster(vo, 1, 10);
+		return monsterService.searchMonster(vo, 1, 100);
 	}
 }

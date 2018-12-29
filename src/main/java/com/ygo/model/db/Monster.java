@@ -1,8 +1,8 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.Date;
 
-public class MagTra {
+public class Monster {
     private Integer id;
 
     private Integer hashCode;
@@ -16,6 +16,20 @@ public class MagTra {
     private String nwName;
 
     private String psd;
+
+    private Integer lev;
+
+    private Integer attribute;
+
+    private Integer race;
+
+    private Integer atk;
+
+    private Integer def;
+
+    private Integer pend;
+
+    private Integer link;
 
     private String img;
 
@@ -85,6 +99,62 @@ public class MagTra {
         this.psd = psd;
     }
 
+    public Integer getLev() {
+        return lev;
+    }
+
+    public void setLev(Integer lev) {
+        this.lev = lev;
+    }
+
+    public Integer getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Integer attribute) {
+        this.attribute = attribute;
+    }
+
+    public Integer getRace() {
+        return race;
+    }
+
+    public void setRace(Integer race) {
+        this.race = race;
+    }
+
+    public Integer getAtk() {
+        return atk;
+    }
+
+    public void setAtk(Integer atk) {
+        this.atk = atk;
+    }
+
+    public Integer getDef() {
+        return def;
+    }
+
+    public void setDef(Integer def) {
+        this.def = def;
+    }
+
+    public Integer getPend() {
+        return pend;
+    }
+
+    public void setPend(Integer pend) {
+        this.pend = pend;
+    }
+
+    public Integer getLink() {
+        return link;
+    }
+
+    public void setLink(Integer link) {
+        this.link = link;
+    }
+
     public String getImg() {
         return img;
     }
@@ -132,4 +202,14 @@ public class MagTra {
     public void setDescNw(String descNw) {
         this.descNw = descNw;
     }
+
+	@Override
+	public String toString() {
+		return "Monster [id=" + id + ", hashCode=" + hashCode + ", cName=" + cName + ", jName=" + jName + ", eName="
+				+ eName + ", nwName=" + nwName + ", psd=" + psd + ", lev=" + lev + ", attribute=" + attribute
+				+ ", race=" + race + ", atk=" + atk + ", def=" + def + ", pend=" + pend + ", link=" + link + ", img="
+				+ img + ", ban=" + ban + ", proprietary=" + proprietary + ", modifyTime=" + modifyTime + ", createTime="
+				+ createTime + ", descNw=" + descNw + "]";
+	}
+    
 }

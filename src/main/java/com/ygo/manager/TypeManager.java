@@ -5,7 +5,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.ygo.db.service.HashService;
+
+import com.ygo.service.HashService;
 
 @Component
 public class TypeManager {

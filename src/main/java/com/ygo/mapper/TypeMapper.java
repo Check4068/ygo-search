@@ -1,11 +1,12 @@
-package com.ygo.db.mapper;
+package com.ygo.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import com.ygo.db.model.Type;
-import com.ygo.db.model.TypeHash;
+
+import com.ygo.model.db.Type;
+import com.ygo.model.db.TypeHash;
 
 public interface TypeMapper {
 

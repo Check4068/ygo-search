@@ -1,12 +1,13 @@
-package com.ygo.db.service;
+package com.ygo.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ygo.db.mapper.LinkArrowMapper;
-import com.ygo.db.mapper.TypeMapper;
-import com.ygo.db.model.ArrowHash;
-import com.ygo.db.model.TypeHash;
+
+import com.ygo.mapper.LinkArrowMapper;
+import com.ygo.mapper.TypeMapper;
+import com.ygo.model.db.ArrowHash;
+import com.ygo.model.db.TypeHash;
 
 @Service
 public class HashService {

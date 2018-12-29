@@ -1,11 +1,12 @@
-package com.ygo.db.mapper;
+package com.ygo.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-import com.ygo.db.model.MagTra;
+
+import com.ygo.model.db.MagTra;
 
 public interface MagTraMapper {
 

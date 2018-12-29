@@ -1,11 +1,12 @@
-package com.ygo.db.mapper;
+package com.ygo.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import com.ygo.db.model.ArrowHash;
-import com.ygo.db.model.LinkArrow;
+
+import com.ygo.model.db.ArrowHash;
+import com.ygo.model.db.LinkArrow;
 
 public interface LinkArrowMapper {
 

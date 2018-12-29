@@ -1,4 +1,4 @@
-package com.ygo.vo;
+package com.ygo.model.vo;
 
 import java.util.List;
 

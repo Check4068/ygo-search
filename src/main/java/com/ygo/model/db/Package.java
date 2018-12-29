@@ -1,4 +1,4 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.Date;
 

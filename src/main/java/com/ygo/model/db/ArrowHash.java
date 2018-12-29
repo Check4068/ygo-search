@@ -1,11 +1,11 @@
-package com.ygo.db.model;
+package com.ygo.model.db;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class TypeHash {
+public class ArrowHash {
 
-	private Integer type;
+	private Integer arrow;
 	
 	private Set<Integer> hash;
 
@@ -20,11 +20,11 @@ public class TypeHash {
 		}
 	}
 
-	public Integer getType() {
-		return type;
+	public Integer getArrow() {
+		return arrow;
 	}
 
-	public void setType(Integer type) {
-		this.type = type;
+	public void setArrow(Integer arrow) {
+		this.arrow = arrow;
 	}
 }
