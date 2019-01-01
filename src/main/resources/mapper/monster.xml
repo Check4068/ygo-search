@@ -17,13 +17,13 @@
 	       AND lev=#{mon.lev}
 	   </if>
 	   <if test="mon.attributes != null">
-	       AND attribute= IN
+	       AND attribute IN
            <foreach collection="mon.attributes" item="attribute" index="index" open="(" close=")" separator=",">
 	            #{attribute}
            </foreach>
 	   </if>
 	   <if test="mon.races != null">
-	       AND race= IN
+	       AND race IN
            <foreach collection="mon.races" item="race" index="index" open="(" close=")" separator=",">
 	            #{race}
            </foreach>
@@ -44,6 +44,49 @@
 	       AND ban=#{mon.limit}
 	   </if>
 	   LIMIT #{start},#{row}
+	</select>
+	
+	<select id="totalNum" resultType="java.lang.Integer">
+	   SELECT COUNT(*) FROM t_monster WHERE 1=1
+	   <if test="ids != null">
+	       AND hash_code IN
+           <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+	            #{id}
+           </foreach>
+	   </if>
+	   <if test="mon.name != null &amp;&amp; mon.name != ''">
+	       AND c_name LIKE CONCAT('%',#{mon.name},'%')
+	   </if>
+	   <if test="mon.lev != null">
+	       AND lev=#{mon.lev}
+	   </if>
+	   <if test="mon.attributes != null">
+	       AND attribute IN
+           <foreach collection="mon.attributes" item="attribute" index="index" open="(" close=")" separator=",">
+	            #{attribute}
+           </foreach>
+	   </if>
+	   <if test="mon.races != null">
+	       AND race IN
+           <foreach collection="mon.races" item="race" index="index" open="(" close=")" separator=",">
+	            #{race}
+           </foreach>
+	   </if>
+	   <if test="mon.atk != null">
+	       AND atk=#{mon.atk}
+	   </if>
+	   <if test="mon.def != null">
+	       AND def=#{mon.def}
+	   </if>
+	   <if test="mon.pend != null">
+	       AND pend=#{mon.pend}
+	   </if>
+	   <if test="mon.link != null">
+	       AND link=#{mon.link}
+	   </if>
+	   <if test="mon.limit != null">
+	       AND ban=#{mon.limit}
+	   </if>
 	</select>
 
 </mapper>

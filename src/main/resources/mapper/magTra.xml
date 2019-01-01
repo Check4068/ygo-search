@@ -3,20 +3,36 @@
 <mapper namespace="com.ygo.mapper.MagTraMapper">
 
 	<select id="findMagTra" resultType="com.ygo.model.db.MagTra">
-	   SELECT c_name,j_name,e_name,nw_name,psd,img,ban,desc_nw,proprietary,hash_code FROM t_mag_tra WHERE 1=1
+	   SELECT c_name,j_name,e_name,nw_name,psd,img,ban,desc_nw,proprietary,hash_code FROM t_mag_tra WHERE type=#{mag.type}
 	   <if test="ids != null">
 	       AND hash_code IN
            <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
 	            #{id}
            </foreach>
 	   </if>
-	   <if test="mag.name != null &amp;&amp; mon.name != ''">
+	   <if test="mag.name != null &amp;&amp; mag.name != ''">
 	       AND c_name LIKE CONCAT('%',#{mag.name},'%')
 	   </if>
 	   <if test="mag.limit != null">
 	       AND ban=#{mag.limit}
 	   </if>
 	   LIMIT #{start},#{row}
+	</select>
+	
+	<select id="countNum" resultType="java.lang.Integer">
+	   SELECT COUNT(*) FROM t_mag_tra WHERE type=#{mag.type}
+	   <if test="ids != null">
+	       AND hash_code IN
+           <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+	            #{id}
+           </foreach>
+	   </if>
+	   <if test="mag.name != null &amp;&amp; mag.name != ''">
+	       AND c_name LIKE CONCAT('%',#{mag.name},'%')
+	   </if>
+	   <if test="mag.limit != null">
+	       AND ban=#{mag.limit}
+	   </if>
 	</select>
 
 </mapper>

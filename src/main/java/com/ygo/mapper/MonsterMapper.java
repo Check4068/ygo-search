@@ -6,9 +6,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-
 import com.ygo.model.db.Monster;
-import com.ygo.model.vo.MonsterVO;
+import com.ygo.model.vo.CardRequestVO;
 
 
 public interface MonsterMapper {
@@ -20,5 +19,7 @@ public interface MonsterMapper {
 	@Select("SELECT COUNT(*) FROM t_monster WHERE hash_code=#{hash}")
 	Boolean exists(@Param("hash") Integer hash);
 	
-	List<Monster> findMonster(@Param("ids") Set<Integer> ids, @Param("mon") MonsterVO monster, @Param("start") Integer start, @Param("row") Integer row);
+	List<Monster> findMonster(@Param("ids") Set<Integer> ids, @Param("mon") CardRequestVO monster, @Param("start") Integer start, @Param("row") Integer row);
+	
+	Integer totalNum(@Param("ids") Set<Integer> ids, @Param("mon") CardRequestVO monster);
 }

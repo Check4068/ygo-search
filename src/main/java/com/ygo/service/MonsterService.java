@@ -22,9 +22,9 @@ import com.ygo.mapper.RareMapper;
 import com.ygo.mapper.TypeMapper;
 import com.ygo.model.db.Monster;
 import com.ygo.model.db.PackageInfo;
-import com.ygo.model.vo.CardVO;
-import com.ygo.model.vo.MonsterVO;
-import com.ygo.model.vo.CardVO.PackInfo;
+import com.ygo.model.vo.CardResponseVO;
+import com.ygo.model.vo.CardRequestVO;
+import com.ygo.model.vo.CardResponseVO.PackInfo;
 
 @Service
 public class MonsterService {
@@ -53,7 +53,7 @@ public class MonsterService {
 	@Autowired
 	private TypeManager typeManager;
 
-	public List<CardVO> searchMonster(MonsterVO monsterVO, Integer start, Integer row) throws Exception {
+	public List<CardResponseVO> searchMonster(CardRequestVO monsterVO, Integer start, Integer row) throws Exception {
 		Set<Integer> hashs = new HashSet<Integer>();
 		if (monsterVO.getArrows() != null) {
 			arrowsHandler(monsterVO.getArrows(), hashs);
@@ -68,11 +68,12 @@ public class MonsterService {
 		}
 		
 		List<Monster> list = monsterMapper.findMonster(hashs, monsterVO, (start - 1) * row, row);
-		List<CardVO> vos = new ArrayList<CardVO>();
+		List<CardResponseVO> vos = new ArrayList<CardResponseVO>();
 		for (Monster mon : list) {
-			CardVO vo = new CardVO();
+			CardResponseVO vo = new CardResponseVO();
 			vo.setcName(mon.getcName());
 			vo.setAtk(mon.getAtk().toString());
+			vo.setDef(mon.getDef().toString());
 			vo.setAttribute(AttributeEnum.getName(mon.getAttribute()));
 			vo.setBan(LimitEnum.getName(mon.getBan()));
 			vo.setDescNw(mon.getDescNw());
@@ -111,6 +112,23 @@ public class MonsterService {
 		}
 		
 		return vos;
+	}
+	
+	public Integer totalNum(CardRequestVO monsterVO) throws Exception {
+		Set<Integer> hashs = new HashSet<Integer>();
+		if (monsterVO.getArrows() != null) {
+			arrowsHandler(monsterVO.getArrows(), hashs);
+		}
+		
+		if (monsterVO.getOthers() != null) {
+			typeHandler(monsterVO.getOthers(), hashs);
+		}
+		
+		if (hashs.size() <= 0) {
+			hashs = null;
+		}
+		
+		return monsterMapper.totalNum(hashs, monsterVO);
 	}
 	
 	private void arrowsHandler(List<Integer> arrows, Set<Integer> hashs) {

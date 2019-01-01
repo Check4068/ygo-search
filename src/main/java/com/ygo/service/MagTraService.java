@@ -3,12 +3,16 @@ package com.ygo.service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ygo.basic.LimitEnum;
 import com.ygo.basic.TypeEnum;
+import com.ygo.manager.TypeManager;
 import com.ygo.mapper.MagTraMapper;
 import com.ygo.mapper.PackageInfoMapper;
 import com.ygo.mapper.PackageMapper;
@@ -16,8 +20,9 @@ import com.ygo.mapper.RareMapper;
 import com.ygo.mapper.TypeMapper;
 import com.ygo.model.db.MagTra;
 import com.ygo.model.db.PackageInfo;
-import com.ygo.model.vo.CardVO;
-import com.ygo.model.vo.CardVO.PackInfo;
+import com.ygo.model.vo.CardRequestVO;
+import com.ygo.model.vo.CardResponseVO;
+import com.ygo.model.vo.CardResponseVO.PackInfo;
 
 @Service
 public class MagTraService {
@@ -37,13 +42,23 @@ public class MagTraService {
 	@Autowired
 	private RareMapper rareMapper;
 
-	public List<CardVO> searchMagTra() throws Exception {
-		MagTra magTra = new MagTra();
-		magTra.setBan(1);
-		List<MagTra> list = magTraMapper.findMagTra(magTra, 0, 100);
-		List<CardVO> vos = new ArrayList<CardVO>();
+	@Autowired
+	private TypeManager typeManager;
+	
+	public List<CardResponseVO> searchMagTra(CardRequestVO monsterVO, Integer start, Integer row) throws Exception {
+		Set<Integer> hashs = new HashSet<Integer>();
+		if (monsterVO.getOthers() != null) {
+			typeHandler(monsterVO.getOthers(), hashs);
+		}
+		
+		if (hashs.size() <= 0) {
+			hashs = null;
+		}
+		
+		List<MagTra> list = magTraMapper.findMagTra(hashs, monsterVO, (start - 1) * row, row);
+		List<CardResponseVO> vos = new ArrayList<CardResponseVO>();
 		for (MagTra mt : list) {
-			CardVO vo = new CardVO();
+			CardResponseVO vo = new CardResponseVO();
 			vo.setcName(mt.getcName());
 			vo.setBan(LimitEnum.getName(mt.getBan()));
 			vo.setDescNw(mt.getDescNw());
@@ -74,5 +89,26 @@ public class MagTraService {
 		}
 		
 		return vos;
+	}
+	
+	public Integer count(CardRequestVO monsterVO) throws Exception {
+		Set<Integer> hashs = new HashSet<Integer>();
+		if (monsterVO.getOthers() != null) {
+			typeHandler(monsterVO.getOthers(), hashs);
+		}
+		
+		if (hashs.size() <= 0) {
+			hashs = null;
+		}
+		
+		return magTraMapper.countNum(hashs, monsterVO);
+	}
+	
+	private void typeHandler(List<Integer> arrows, Set<Integer> hashs) {
+		arrows.forEach(arrow -> {
+			for (Integer integer : typeManager.getHash(arrow)) {
+				hashs.add(integer);
+			}
+		});
 	}
 }

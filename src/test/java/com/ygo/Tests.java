@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ygo.mapper.MonsterMapper;
 import com.ygo.model.db.Monster;
-import com.ygo.model.vo.CardVO;
+import com.ygo.model.vo.CardResponseVO;
 import com.ygo.service.HashService;
 import com.ygo.service.MagTraService;
 import com.ygo.service.MonsterService;

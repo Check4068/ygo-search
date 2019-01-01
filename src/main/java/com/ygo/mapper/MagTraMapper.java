@@ -1,12 +1,13 @@
 package com.ygo.mapper;
 
 import java.util.List;
+import java.util.Set;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-
 import com.ygo.model.db.MagTra;
+import com.ygo.model.vo.CardRequestVO;
 
 public interface MagTraMapper {
 
@@ -17,5 +18,7 @@ public interface MagTraMapper {
 	@Select("SELECT COUNT(*) FROM t_mag_tra WHERE hash_code=#{hash}")
 	Boolean exists(@Param("hash") Integer hash);
 	
-	List<MagTra> findMagTra(@Param("mag") MagTra magtTra, @Param("start") Integer start, @Param("row") Integer row);
+	List<MagTra> findMagTra(@Param("ids") Set<Integer> ids, @Param("mag") CardRequestVO monster, @Param("start") Integer start, @Param("row") Integer row);
+
+	Integer countNum(@Param("ids") Set<Integer> ids, @Param("mag") CardRequestVO monster);
 }

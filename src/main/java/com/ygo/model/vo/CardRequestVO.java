@@ -2,7 +2,7 @@ package com.ygo.model.vo;
 
 import java.util.List;
 
-public class MonsterVO {
+public class CardRequestVO {
 
 	private String atk;
 	
@@ -17,6 +17,8 @@ public class MonsterVO {
 	private Integer pend;
 
 	private Integer link;
+	
+	private Integer type;
 
 	private List<Integer> arrows;
 
@@ -112,5 +114,13 @@ public class MonsterVO {
 
 	public void setAttributes(List<Integer> attributes) {
 		this.attributes = attributes;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 }

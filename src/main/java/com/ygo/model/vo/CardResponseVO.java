@@ -3,7 +3,7 @@ package com.ygo.model.vo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardVO {
+public class CardResponseVO {
 	
 	private Integer hashCode;
 
