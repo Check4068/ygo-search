@@ -89,7 +89,7 @@
 	   </if>
 	</select>
 
-    <select id="findAllMonster" resultType="com.ygo.model.db.SolrMonster">
+    <select id="findAllMonster" resultType="com.ygo.model.db.SolrCard">
       SELECT a.id,a.c_name,a.j_name,a.e_name,a.nw_name,a.psd,a.lev,a.attribute,a.race,a.atk,a.def,a.pend,a.link,a.img,a.ban,a.desc_nw,a.proprietary,a.hash_code,GROUP_CONCAT(arrow) arrow,GROUP_CONCAT(type) type
       FROM t_monster a
       LEFT JOIN t_link_arrow b ON a.hash_code = b.monster_hash

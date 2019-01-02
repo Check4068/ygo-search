@@ -12,8 +12,6 @@ import com.ygo.basic.AttributeEnum;
 import com.ygo.basic.LimitEnum;
 import com.ygo.basic.RaceEnum;
 import com.ygo.basic.TypeEnum;
-import com.ygo.manager.ArrowManager;
-import com.ygo.manager.TypeManager;
 import com.ygo.mapper.LinkArrowMapper;
 import com.ygo.mapper.MonsterMapper;
 import com.ygo.mapper.PackageInfoMapper;
@@ -46,21 +44,15 @@ public class MonsterService {
 	
 	@Autowired
 	private RareMapper rareMapper;
-	
-	@Autowired
-	private ArrowManager arrowManager;
-	
-	@Autowired
-	private TypeManager typeManager;
 
 	public List<CardResponseVO> searchMonster(CardRequestVO monsterVO, Integer start, Integer row) throws Exception {
 		Set<Integer> hashs = new HashSet<Integer>();
 		if (monsterVO.getArrows() != null) {
-			arrowsHandler(monsterVO.getArrows(), hashs);
+			//arrowsHandler(monsterVO.getArrows(), hashs);
 		}
 		
 		if (monsterVO.getOthers() != null) {
-			typeHandler(monsterVO.getOthers(), hashs);
+			//typeHandler(monsterVO.getOthers(), hashs);
 		}
 		
 		if (hashs.size() <= 0) {
@@ -117,11 +109,11 @@ public class MonsterService {
 	public Integer totalNum(CardRequestVO monsterVO) throws Exception {
 		Set<Integer> hashs = new HashSet<Integer>();
 		if (monsterVO.getArrows() != null) {
-			arrowsHandler(monsterVO.getArrows(), hashs);
+			//arrowsHandler(monsterVO.getArrows(), hashs);
 		}
 		
 		if (monsterVO.getOthers() != null) {
-			typeHandler(monsterVO.getOthers(), hashs);
+			//typeHandler(monsterVO.getOthers(), hashs);
 		}
 		
 		if (hashs.size() <= 0) {
@@ -129,21 +121,5 @@ public class MonsterService {
 		}
 		
 		return monsterMapper.totalNum(hashs, monsterVO);
-	}
-	
-	private void arrowsHandler(List<Integer> arrows, Set<Integer> hashs) {
-		arrows.forEach(arrow -> {
-			for (Integer integer : arrowManager.getHash(arrow)) {
-				hashs.add(integer);
-			}
-		});
-	}
-	
-	private void typeHandler(List<Integer> arrows, Set<Integer> hashs) {
-		arrows.forEach(arrow -> {
-			for (Integer integer : typeManager.getHash(arrow)) {
-				hashs.add(integer);
-			}
-		});
 	}
 }

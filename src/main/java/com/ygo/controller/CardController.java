@@ -18,12 +18,12 @@ public class CardController {
 	@Autowired
 	private MagTraService magTraService;
 
-	@RequestMapping("/card")
-	public Object searchCard(CardRequestVO vo, Integer start, Integer row) throws Exception {
-		if (vo.getType() != 0) {
-			return new Paging<CardResponseVO>(start, magTraService.count(vo), row, magTraService.searchMagTra(vo, start, row));
-		}
-
-		return new Paging<CardResponseVO>(start, monsterService.totalNum(vo), row, monsterService.searchMonster(vo, start, row));
-	}
+//	@RequestMapping("/card")
+//	public Object searchCard(CardRequestVO vo, Integer start, Integer row) throws Exception {
+//		if (vo.getType() != 0) {
+//			return new Paging<CardResponseVO>(start, magTraService.count(vo), row, magTraService.searchMagTra(vo, start, row));
+//		}
+//
+//		return new Paging<CardResponseVO>(start, monsterService.totalNum(vo), row, monsterService.searchMonster(vo, start, row));
+//	}
 }

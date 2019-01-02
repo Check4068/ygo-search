@@ -15,7 +15,7 @@ import com.ygo.basic.RaceEnum;
 import com.ygo.basic.TypeEnum;
 
 @JsonInclude(Include.NON_NULL)
-public class SolrMonster implements Serializable{
+public class SolrCard implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

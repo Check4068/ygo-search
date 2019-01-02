@@ -6,13 +6,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ygo.basic.LimitEnum;
 import com.ygo.basic.TypeEnum;
-import com.ygo.manager.TypeManager;
 import com.ygo.mapper.MagTraMapper;
 import com.ygo.mapper.PackageInfoMapper;
 import com.ygo.mapper.PackageMapper;
@@ -41,15 +38,12 @@ public class MagTraService {
 	
 	@Autowired
 	private RareMapper rareMapper;
-
-	@Autowired
-	private TypeManager typeManager;
 	
 	public List<CardResponseVO> searchMagTra(CardRequestVO monsterVO, Integer start, Integer row) throws Exception {
 		Set<Integer> hashs = new HashSet<Integer>();
-		if (monsterVO.getOthers() != null) {
-			typeHandler(monsterVO.getOthers(), hashs);
-		}
+		//if (monsterVO.getOthers() != null) {
+			//typeHandler(monsterVO.getOthers(), hashs);
+		//}
 		
 		if (hashs.size() <= 0) {
 			hashs = null;
@@ -89,26 +83,5 @@ public class MagTraService {
 		}
 		
 		return vos;
-	}
-	
-	public Integer count(CardRequestVO monsterVO) throws Exception {
-		Set<Integer> hashs = new HashSet<Integer>();
-		if (monsterVO.getOthers() != null) {
-			typeHandler(monsterVO.getOthers(), hashs);
-		}
-		
-		if (hashs.size() <= 0) {
-			hashs = null;
-		}
-		
-		return magTraMapper.countNum(hashs, monsterVO);
-	}
-	
-	private void typeHandler(List<Integer> arrows, Set<Integer> hashs) {
-		arrows.forEach(arrow -> {
-			for (Integer integer : typeManager.getHash(arrow)) {
-				hashs.add(integer);
-			}
-		});
 	}
 }

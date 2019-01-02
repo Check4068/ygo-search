@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import com.ygo.model.db.Monster;
-import com.ygo.model.db.SolrMonster;
+import com.ygo.model.db.SolrCard;
 import com.ygo.model.vo.CardRequestVO;
 
 
@@ -24,6 +24,9 @@ public interface MonsterMapper {
 	
 	Integer totalNum(@Param("ids") Set<Integer> ids, @Param("mon") CardRequestVO monster);
 
-    List<SolrMonster> findAllMonster(@Param("start") Integer start, @Param("row") Integer row);
+    List<SolrCard> findAllMonster(@Param("start") Integer start, @Param("row") Integer row);
+    
+    @Select("SELECT COUNT(*) FROM t_monster")
+    Integer count();
 }
 

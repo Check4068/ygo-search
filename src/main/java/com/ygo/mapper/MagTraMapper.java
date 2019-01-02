@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import com.ygo.model.db.MagTra;
+import com.ygo.model.db.SolrCard;
 import com.ygo.model.vo.CardRequestVO;
 
 public interface MagTraMapper {
@@ -21,4 +22,9 @@ public interface MagTraMapper {
 	List<MagTra> findMagTra(@Param("ids") Set<Integer> ids, @Param("mag") CardRequestVO monster, @Param("start") Integer start, @Param("row") Integer row);
 
 	Integer countNum(@Param("ids") Set<Integer> ids, @Param("mag") CardRequestVO monster);
+	
+	List<SolrCard> findAllMagtra(@Param("start") Integer start, @Param("row") Integer row);
+	
+	@Select("SELECT COUNT(*) FROM t_mag_tra")
+    Integer count();
 }
