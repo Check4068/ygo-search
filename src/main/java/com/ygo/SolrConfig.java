@@ -10,7 +10,7 @@ import org.springframework.data.solr.server.SolrClientFactory;
 import org.springframework.data.solr.server.support.HttpSolrClientFactory;
 
 @Configuration
-public class YourSolrContext {
+public class SolrConfig {
 
     @Bean
     @Autowired

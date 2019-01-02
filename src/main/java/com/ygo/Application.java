@@ -1,13 +1,24 @@
 package com.ygo;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.ygo.service.SolrCardService;
 
 @SpringBootApplication
 @MapperScan(basePackages = { "com.ygo.mapper" })
-public class Application {
+public class Application implements CommandLineRunner {
+	
+	@Autowired
+	private SolrCardService service;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		service.pushSolr();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(Application.class);
