@@ -28,7 +28,7 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		arrowManager.addData();
-		typeManager.addData();
+		//arrowManager.addData();
+		//typeManager.addData();
 	}
 }

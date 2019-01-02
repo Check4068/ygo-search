@@ -184,17 +184,17 @@
    <field name="eName" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="nwName" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="psd" type="string" indexed="true" stored="true" multiValued="false"/>
-   <field name="lev" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="attribute" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="race" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="atk" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="def" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="pend" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="link" type="string" indexed="true" stored="false" multiValued="false"/>
+   <field name="lev" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="attribute" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="race" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="atk" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="def" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="pend" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="link" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="img" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="ban" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="proprietary" type="string" indexed="true" stored="true" multiValued="false"/>
-   <field name="arrow" type="string" indexed="true" stored="false" multiValued="true"/>
+   <field name="arrow" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="type" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="infos" type="string" indexed="false" stored="false" multiValued="true"/>
    <field name="descNw" type="text_ik" indexed="true" stored="true" multiValued="false"/>
@@ -202,7 +202,7 @@
    <field name="sellTime" type="string" indexed="false" stored="false" multiValued="false"/>
    <field name="rare" type="string" indexed="false" stored="false" multiValued="false"/>
    <field name="cardNo" type="string" indexed="false" stored="false" multiValued="false"/>
-   
+   <field name="cardKey" type="text_general" indexed="true" stored="false" required="false" multiValued="true"/>
    <!-- ygo config end -->
 
    <!-- Main body of document extracted by SolrCell.
@@ -273,6 +273,11 @@
       Unless this field is marked with required="false", it will be a required field
    -->
  <uniqueKey>hashCode</uniqueKey>
+ 
+   <copyField source="cName" dest="cardKey"/>
+   <copyField source="attribute" dest="cardKey"/>
+   <copyField source="race" dest="cardKey"/>
+   <copyField source="descNw" dest="cardKey"/>
 
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
