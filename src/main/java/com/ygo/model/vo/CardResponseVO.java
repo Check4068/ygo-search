@@ -1,7 +1,7 @@
 package com.ygo.model.vo;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CardResponseVO {
 	
@@ -37,19 +37,13 @@ public class CardResponseVO {
 
     private String proprietary;
     
-    private List<String> type;
+    private Set<String> type;
     
-    private List<Integer> arrow;
+    private Set<String> arrow;
 
     private String descNw;
     
     private List<PackInfo> infos;
-    
-    {
-    	type = new ArrayList<String>();
-    	arrow = new ArrayList<Integer>();
-    	infos = new ArrayList<PackInfo>();
-    }
 
 	public Integer getHashCode() {
 		return hashCode;
@@ -186,41 +180,39 @@ public class CardResponseVO {
 	public void setDescNw(String descNw) {
 		this.descNw = descNw;
 	}
-
-	public List<String> getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type.add(type);
-	}
-
-	public List<Integer> getArrow() {
-		return arrow;
-	}
-
-	public void setArrow(Integer arrow) {
-		this.arrow.add(arrow);
-	}
 	
 	public List<PackInfo> getInfos() {
 		return infos;
 	}
 
-	public void setInfos(PackInfo infos) {
-		this.infos.add(infos);
+	public void setInfos(List<PackInfo> infos) {
+		this.infos = infos;
 	}
 	
-
 	@Override
 	public String toString() {
 		return "CardVO [hashCode=" + hashCode + ", cName=" + cName + ", jName=" + jName + ", eName=" + eName
 				+ ", nwName=" + nwName + ", psd=" + psd + ", lev=" + lev + ", attribute=" + attribute + ", race=" + race
 				+ ", atk=" + atk + ", def=" + def + ", pend=" + pend + ", link=" + link + ", img=" + img + ", ban="
-				+ ban + ", proprietary=" + proprietary + ", type=" + type + ", arrow=" + arrow + ", descNw=" + descNw
+				+ ban + ", proprietary=" + proprietary + ", type=" + getType() + ", arrow=" + getArrow() + ", descNw=" + descNw
 				+ ", infos=" + infos + "]";
 	}
 
+	public Set<String> getType() {
+		return type;
+	}
+
+	public void setType(Set<String> type) {
+		this.type = type;
+	}
+
+	public Set<String> getArrow() {
+		return arrow;
+	}
+
+	public void setArrow(Set<String> arrow) {
+		this.arrow = arrow;
+	}
 
 	public static class PackInfo {
 		

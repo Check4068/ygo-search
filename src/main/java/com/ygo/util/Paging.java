@@ -4,16 +4,16 @@ import java.util.List;
 
 public class Paging<E> {
 
-	private Integer currentPage;
+	private Long currentPage;
 	
-	private Integer total;
+	private Long total;
 	
-	private Integer totalPage;
+	private Long totalPage;
 	
 	private List<E> data;
 
-	public Paging(Integer currentPage, Integer total, Integer row, List<E> data) {
-		this.currentPage = currentPage;
+	public Paging(Long currentPage, Long total, Integer row, List<E> data) {
+		this.setCurrentPage(currentPage);
 		this.total = total;
 		this.totalPage = total % row == 0 ? total / row : total / row + 1;
 		this.data = data;
@@ -27,27 +27,27 @@ public class Paging<E> {
 		this.data = data;
 	}
 
-	public Integer getTotalPage() {
+	public Long getTotalPage() {
 		return totalPage;
 	}
 
-	public void setTotalPage(Integer totalPage) {
+	public void setTotalPage(Long totalPage) {
 		this.totalPage = totalPage;
 	}
 
-	public Integer getTotal() {
+	public Long getTotal() {
 		return total;
 	}
 
-	public void setTotal(Integer total) {
+	public void setTotal(Long total) {
 		this.total = total;
 	}
 
-	public Integer getCurrentPage() {
+	public Long getCurrentPage() {
 		return currentPage;
 	}
 
-	public void setCurrentPage(Integer currentPage) {
+	public void setCurrentPage(Long currentPage) {
 		this.currentPage = currentPage;
 	}
 }

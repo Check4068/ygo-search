@@ -79,6 +79,9 @@ public class SolrCard implements Serializable{
 	@Field
 	private Set<String> type;
 	
+	@Field
+	private Integer cardType;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -241,6 +244,17 @@ public class SolrCard implements Serializable{
 		
 		this.type = new HashSet<String>();
 	    for (String string : type.split(",")) {
+	    	if (string.equals("0")) {
+	    		this.cardType = 0;
+	    	}
+	    	
+	    	if (string.equals("1")) {
+	    		this.cardType = 1;
+	    	}
+	    	
+	    	if (string.equals("2")) {
+	    		this.cardType = 2;
+	    	}
 			this.type.add(TypeEnum.getName(Integer.parseInt(string)));
 		}
 	}
@@ -260,5 +274,13 @@ public class SolrCard implements Serializable{
 
 	public void setBan(Integer ban) {
 		this.ban = LimitEnum.getName(ban);
+	}
+
+	public Integer getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(Integer cardType) {
+		this.cardType = cardType;
 	}
 }

@@ -1,18 +1,12 @@
 package com.ygo.mapper;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-
-import com.ygo.model.db.PackageInfo;
+import com.ygo.model.db.CardPackInfo;
 
 public interface PackageInfoMapper {
-
-	@Insert("INSERT INTO t_package_info(card_hash,package_id,rare,card_no,sell_time) VALUES(#{info.cardHash},#{info.packageId},#{info.rare},#{info.cardNo},#{info.sellTime})")
-	Integer insertInfo(@Param("info") PackageInfo info);
 	
-	@Select("SELECT package_id,rare,card_no,sell_time FROM t_package_info WHERE card_hash=#{hash}")
-	List<PackageInfo> findByHash(@Param("hash") Integer hash);
+	@Select("SELECT a.card_hash,a.sell_time,a.card_no,b.name pack,c.short rare FROM t_package_info a, t_package b, t_rare c WHERE a.package_id = b.id AND a.rare = c.id LIMIT #{start},#{row}")
+	List<CardPackInfo> findAll(@Param("start") Integer start, @Param("row") Integer row);
 }
